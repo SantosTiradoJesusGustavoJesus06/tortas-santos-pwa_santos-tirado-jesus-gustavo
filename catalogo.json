@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nombre": "Torta Cubana",
+    "categoria": "Tortas Clásicas",
+    "precio": 110,
+    "stock": 20,
+    "imagen": "img/torta-cubana.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Torta de Milanesa",
+    "categoria": "Tortas Clásicas",
+    "precio": 95,
+    "stock": 15,
+    "imagen": "img/torta-de-milanesa.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Jamón con Queso",
+    "categoria": "Tortas Clásicas",
+    "precio": 75,
+    "stock": 25,
+    "imagen": "img/jamon_con_queso.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Pierna Adobada",
+    "categoria": "Tortas Clásicas",
+    "precio": 95,
+    "stock": 12,
+    "imagen": "img/pierna-adobada.png"
+  },
+  {
+    "id": 5,
+    "nombre": "Torta Ahogada",
+    "categoria": "Tortas Clásicas",
+    "precio": 100,
+    "stock": 10,
+    "imagen": "img/torta-ahogada.png"
+  },
+  {
+    "id": 6,
+    "nombre": "Torta de Asada",
+    "categoria": "Especiales",
+    "precio": 110,
+    "stock": 18,
+    "imagen": "img/torta-asada.png"
+  },
+  {
+    "id": 7,
+    "nombre": "Torta de Chilaquiles",
+    "categoria": "Especiales",
+    "precio": 85,
+    "stock": 14,
+    "imagen": "img/torta-de-chilaquiles.png"
+  },
+  {
+    "id": 8,
+    "nombre": "Torta de Pastor",
+    "categoria": "Especiales",
+    "precio": 95,
+    "stock": 22,
+    "imagen": "img/torta-de-pastor.png"
+  },
+  {
+    "id": 9,
+    "nombre": "Torta Vegetariana",
+    "categoria": "Especiales",
+    "precio": 80,
+    "stock": 10,
+    "imagen": "img/torta-vegetariana.png"
+  },
+  {
+    "id": 10,
+    "nombre": "Santos Especial",
+    "categoria": "Especiales",
+    "precio": 130,
+    "stock": 8,
+    "imagen": "img/santos-especial.png"
+  },
+  {
+    "id": 11,
+    "nombre": "Agua Fresca (1L)",
+    "categoria": "Bebidas y Extras",
+    "precio": 30,
+    "stock": 30,
+    "imagen": "img/agua-fresca.png"
+  },
+  {
+    "id": 12,
+    "nombre": "Licuado de Plátano",
+    "categoria": "Bebidas y Extras",
+    "precio": 45,
+    "stock": 15,
+    "imagen": "img/licuado_de_platano.png"
+  },
+  {
+    "id": 13,
+    "nombre": "Refresco (355ml)",
+    "categoria": "Bebidas y Extras",
+    "precio": 30,
+    "stock": 40,
+    "imagen": "img/refresco.png"
+  },
+  {
+    "id": 14,
+    "nombre": "Papas Fritas",
+    "categoria": "Bebidas y Extras",
+    "precio": 40,
+    "stock": 25,
+    "imagen": "img/papas-fritas.png"
+  },
+  {
+    "id": 15,
+    "nombre": "Chiles en Vinagre",
+    "categoria": "Bebidas y Extras",
+    "precio": 15,
+    "stock": 50,
+    "imagen": "img/chiles_en_vinagre.png"
+  }
+]
