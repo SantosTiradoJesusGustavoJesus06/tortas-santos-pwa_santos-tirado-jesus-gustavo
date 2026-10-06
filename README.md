@@ -5,8 +5,8 @@
 **Negocio:** Tortas Santos  
 **Giro:** Tortería Mexicana (Alimentos y Bebidas)  
 
-* **URL del repositorio:** 
-* **URL de GitHub Pages:** 
+* **URL del repositorio:** https://github.com/SantosTiradoJesusGustavoJesus06/tortas-santos-pwa_santos-tirado-jesus-gustavo
+* **URL de GitHub Pages:** https://santostiradojesusgustavojesus06.github.io/tortas-santos-pwa_santos-tirado-jesus-gustavo/
 
 ---
 
