@@ -1,0 +1,8 @@
+# Excluir entorno virtual y cachés de Python/Django
+servidor-ssr-stjg/venv/
+servidor-ssr-stjg/__pycache__/
+servidor-ssr-stjg/catalogo_stjg/__pycache__/
+servidor-ssr-stjg/ssr_demo_stjg/__pycache__/
+
+# Excluir base de datos local de Django
+servidor-ssr-stjg/db.sqlite3

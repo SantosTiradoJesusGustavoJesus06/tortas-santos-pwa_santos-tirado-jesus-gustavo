@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tortas Santos - Catálogo SSR</title>
+    
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+
+    <!-- Encabezado corporativo -->
+    <header class="app-header">
+        <div class="header-container">
+            <img src="{% static 'img/LOGO_STJG.png' %}" alt="Logo Tortas Santos" class="brand-logo" onerror="this.src='https://via.placeholder.com/60?text=Logo'">
+            <div class="brand-info">
+                <h1>Tortas Santos</h1>
+                <p>Tortería Mexicana · Sabor Tradicional y Económico (SSR)</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Zona Principal del Catálogo -->
+    <main class="main-content">
+        
+        <!-- Botones de Filtrado por Categoría -->
+        <div class="categorias-container">
+            <button class="activo" id="btn-todos">Todos</button>
+            <button id="btn-tortas">Tortas Clásicas</button>
+            <button id="btn-especiales">Especiales</button>
+            <button id="btn-bebidas">Bebidas y Extras</button>
+        </div>
+
+        <h2 class="section-title">Nuestro Catálogo (Servidor SSR)</h2>
+        
+        <div class="catalogo-grid" id="catalogo-grid">
+            {% for producto in productos %}
+                <div class="card" data-categoria="{{ producto.categoria }}">
+                    <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}" class="card-img" onerror="this.src='https://via.placeholder.com/150?text=Tortas+Santos'">
+                    <div class="card-body">
+                        <span class="card-category">{{ producto.categoria }}</span>
+                        <h3 class="card-title">{{ producto.nombre }}</h3>
+                        <div class="card-footer-info">
+                            <span class="card-price">${{ producto.precio|floatformat:2 }}</span>
+                            <!-- Uso de atributos data-* para evitar conflictos de sintaxis en VS Code -->
+                            <button type="button" class="btn-agregar" data-nombre="{{ producto.nombre }}" data-precio="{{ producto.precio }}" onclick="agregarDesdeBoton(this)">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No hay productos disponibles en este momento.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Sección del Carrito de Compras -->
+        <section class="seccion-carrito">
+            <h2>Tu Carrito de Compras</h2>
+            <div id="lista-carrito">
+                <p style="color: var(--text-muted); margin-top: 10px;">El carrito está vacío.</p>
+            </div>
+            <h3 id="total-carrito" style="margin-top: 15px; color: var(--primary-color);">Total: $0.00</h3>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="app-footer">
+        <p>⏰ Horario: Lunes a Sábado de 6:00 pm a 11:00 pm</p>
+        <p>📍 Cerrada Las Palmas y Da Vinci #125 | 📱 WhatsApp: +1 (555) 789-0123</p>
+        <p class="copyright">&copy; 2026 Tortas Santos - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="{% static 'js/carrito.js' %}"></script>
+</body>
+</html>

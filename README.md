@@ -38,3 +38,35 @@ tortas-santos-pwa_santos-tirado-jesus-gustavo/
 ├── js/
 │   └── csr.js          # Renderizado del lado del cliente (CSR) usando fetch()
 └── img/                # Imágenes de productos (<= 300 KB) y logo
+
+## Estructura del proyecto (Avance 2)
+
+🌮 Tortas Santos - Catálogo (SSR vs CSR)
+
+Alumno: Jesús Gustavo Santos Tirado
+
+🔍 Ver Código Fuente: SSR vs CSR
+
+1. SSR (Server-Side Rendering)
+
+Los productos vienen completamente inyectados e iterados desde el servidor en el HTML inicial:
+
+<div class="catalogo-grid" id="catalogo-grid">
+    <div class="card" data-categoria="Tortas Clásicas">
+        <h3 class="card-title">Torta Cubana</h3>
+        <span class="card-price">$110.00</span>
+    </div>
+    <!-- ... más productos renderizados por el servidor ... -->
+</div>
+
+(Insertar captura de código fuente SSR aquí)
+
+2. CSR (Client-Side Rendering)
+
+El contenedor llega vacío desde el servidor y JavaScript inyecta los elementos en tiempo de ejecución:
+
+<div class="catalogo-grid" id="catalogo-grid">
+    <!-- El contenedor llega vacío; JavaScript poblará las tarjetas dinámicamente -->
+</div>
+
+(Insertar captura de código fuente CSR aquí)
