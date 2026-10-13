@@ -3,6 +3,7 @@ let categoriaActual = 'todos';
 
 document.addEventListener('DOMContentLoaded', () => {
     const botones = document.querySelectorAll('.categorias-container button');
+    
     botones.forEach(btn => {
         btn.addEventListener('click', (e) => {
             botones.forEach(b => b.classList.remove('activo'));
@@ -29,6 +30,12 @@ function aplicarFiltroCategoria() {
             tarjeta.style.display = 'none';
         }
     });
+}
+
+function agregarDesdeBoton(button) {
+    const nombre = button.getAttribute('data-nombre');
+    const precio = parseFloat(button.getAttribute('data-precio'));
+    agregarAlCarrito(nombre, precio);
 }
 
 function agregarAlCarrito(nombre, precio) {
@@ -78,7 +85,7 @@ function renderizarCarrito() {
         total += subtotal;
         html += `
             <div class="item-carrito">
-                <span><strong>${item.nombre}</strong> - $${item.precio} x ${item.cantidad} = $${subtotal.toFixed(2)}</span>
+                <span><strong>${item.nombre}</strong> - $${item.precio.toFixed(2)} x ${item.cantidad} = $${subtotal.toFixed(2)}</span>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <div class="controles-cantidad">
                         <button type="button" onclick="cambiarCantidad('${item.nombre}', -1)">-</button>

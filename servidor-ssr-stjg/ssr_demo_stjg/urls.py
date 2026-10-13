@@ -23,6 +23,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('catalogo/', include('catalogo_stjg.urls')),
 
     # Redirige la ruta principal http://127.0.0.1:8000/ directamente al catálogo

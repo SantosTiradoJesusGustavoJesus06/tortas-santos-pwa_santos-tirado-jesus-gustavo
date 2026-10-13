@@ -1,60 +1,43 @@
-let todosLosProductos = [];
+// Listado completo de productos para renderizado en el cliente (CSR)
+const productosCSR = [
+    { nombre: "Torta Cubana", precio: 110.00, categoria: "Tortas Clásicas", imagen: "img/torta-cubana.png" },
+    { nombre: "Torta de Milanesa", precio: 95.00, categoria: "Tortas Clásicas", imagen: "img/torta-de-milanesa.png" },
+    { nombre: "Jamón con Queso", precio: 75.00, categoria: "Tortas Clásicas", imagen: "img/jamon_con_queso.png" },
+    { nombre: "Pierna Adobada", precio: 95.00, categoria: "Tortas Clásicas", imagen: "img/pierna-adobada.png" },
+    { nombre: "Torta Ahogada", precio: 100.00, categoria: "Tortas Clásicas", imagen: "img/torta-ahogada.png" },
+    { nombre: "Torta de Asada", precio: 110.00, categoria: "Especiales", imagen: "img/torta-asada.png" },
+    { nombre: "Torta de Chilaquiles", precio: 85.00, categoria: "Especiales", imagen: "img/torta-de-chilaquiles.png" },
+    { nombre: "Torta de Pastor", precio: 95.00, categoria: "Especiales", imagen: "img/torta-de-pastor.png" },
+    { nombre: "Torta Vegetariana", precio: 80.00, categoria: "Especiales", imagen: "img/torta-vegetariana.png" },
+    { nombre: "Santos Especial", precio: 130.00, categoria: "Especiales", imagen: "img/santos-especial.png" },
+    { nombre: "Agua Fresca (1L)", precio: 30.00, categoria: "Bebidas y Extras", imagen: "img/agua-fresca.png" },
+    { nombre: "Licuado de Plátano", precio: 45.00, categoria: "Bebidas y Extras", imagen: "img/licuado_de_platano.png" },
+    { nombre: "Refresco (355ml)", precio: 30.00, categoria: "Bebidas y Extras", imagen: "img/refresco.png" },
+    { nombre: "Papas Fritas", precio: 40.00, categoria: "Bebidas y Extras", imagen: "img/papas-fritas.png" },
+    { nombre: "Chiles en Vinagre", precio: 15.00, categoria: "Bebidas y Extras", imagen: "img/chiles_en_vinagre.png" }
+];
 
-// Cargar los productos desde el archivo JSON local
-fetch('catalogo.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('No se pudo cargar el archivo catalogo.json');
-    }
-    return response.json();
-  })
-  .then(data => {
-    todosLosProductos = data;
-    mostrarProductos(todosLosProductos);
-  })
-  .catch(error => {
-    console.error('Error al obtener el catálogo:', error);
-    const contenedor = document.getElementById('catalogo-container');
-    if (contenedor) {
-      contenedor.innerHTML = '<p style="color: red;">Error al cargar los productos del catálogo.</p>';
-    }
-  });
-
-function mostrarProductos(productos) {
-  const contenedor = document.getElementById('catalogo-container');
-  if (!contenedor) return;
-  
-  contenedor.innerHTML = '';
-
-  if (productos.length === 0) {
-    contenedor.innerHTML = '<p>No hay productos disponibles en esta categoría.</p>';
-    return;
-  }
-
-  productos.forEach(prod => {
-    const tarjeta = document.createElement('div');
-    tarjeta.className = 'tarjeta-producto'; // Asegúrate de tener estilos para esta clase en tu CSS
-    tarjeta.innerHTML = `
-      <img src="${prod.imagen}" alt="${prod.nombre}" style="width:100%; height:140px; object-fit:cover; border-radius:6px;" onerror="this.src='https://via.placeholder.com/150?text=Tortas+Santos'">
-      <div style="padding: 0.5rem 0;">
-        <span style="font-size: 0.75rem; background: #ffebee; color: #c62828; padding: 2px 6px; border-radius: 4px; font-weight: bold;">${prod.categoria}</span>
-        <h3 style="font-size: 1rem; margin: 0.4rem 0;">${prod.nombre}</h3>
-        <p style="font-size: 0.85rem; color: #666; margin-bottom: 0.5rem;">${prod.descripcion}</p>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
-          <span style="font-weight: bold; color: #2e7d32; font-size: 1.1rem;">$${Number(prod.precio).toFixed(2)}</span>
-          <button onclick="agregarAlCarrito(${prod.id}, '${prod.nombre.replace(/'/g, "\\'")}', ${prod.precio})" style="background: #0e6b5c; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer;">Agregar</button>
+// Función para inyectar las tarjetas en el DOM
+function renderizarCatalogoCSR(lista) {
+    const grid = document.getElementById('catalogo-grid');
+    if (!grid) return;
+    
+    grid.innerHTML = lista.map(p => `
+        <div class="card" data-categoria="${p.categoria}">
+            <img src="${p.imagen}" alt="${p.nombre}" class="card-img" onerror="this.src='https://via.placeholder.com/150?text=Tortas+Santos'">
+            <div class="card-body">
+                <span class="card-category">${p.categoria}</span>
+                <h3 class="card-title">${p.nombre}</h3>
+                <div class="card-footer-info">
+                    <span class="card-price">$${p.precio.toFixed(2)}</span>
+                    <button type="button" class="btn-agregar" data-nombre="${p.nombre}" data-precio="${p.precio}" onclick="agregarDesdeBoton(this)">Agregar</button>
+                </div>
+            </div>
         </div>
-      </div>
-    `;
-    contenedor.appendChild(tarjeta);
-  });
+    `).join('');
 }
 
-function filtrarProductos(categoria) {
-  if (categoria === 'todos') {
-    mostrarProductos(todosLosProductos);
-  } else {
-    const filtrados = todosLosProductos.filter(p => p.categoria.toLowerCase() === categoria.toLowerCase());
-    mostrarProductos(filtrados);
-  }
-}
+// Ejecutar renderizado al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarCatalogoCSR(productosCSR);
+});
