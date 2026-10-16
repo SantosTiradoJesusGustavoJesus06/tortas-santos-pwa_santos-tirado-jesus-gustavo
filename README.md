@@ -87,3 +87,11 @@ El contenedor llega vacío desde el servidor y JavaScript inyecta los elementos 
     <!-- El contenedor llega vacío; JavaScript poblará las tarjetas dinámicamente -->
 </div>
 ```
+
+## Comparación SSR vs CSR
+
+### SSR (Django): los productos llegan escritos en el HTML
+![Código fuente SSR](docs/captura-ssr-stjg.png)
+
+### CSR (JavaScript): el div del catálogo llega vacío
+![Código fuente CSR](docs/captura-csr-stjg.png)
