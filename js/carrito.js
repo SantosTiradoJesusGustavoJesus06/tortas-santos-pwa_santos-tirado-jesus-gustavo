@@ -1,4 +1,5 @@
-let carrito = [];
+// Inicializar carrito cargándolo desde el localStorage (si existe algo guardado, si no, inicia vacío)
+let carrito = JSON.parse(localStorage.getItem('torteria_carrito')) || [];
 let categoriaActual = 'todos';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             aplicarFiltroCategoria();
         });
     });
+
+    // Renderizar el carrito al cargar la página para recuperar los datos guardados
+    renderizarCarrito();
 });
 
 function aplicarFiltroCategoria() {
@@ -38,6 +42,12 @@ function agregarDesdeBoton(button) {
     agregarAlCarrito(nombre, precio);
 }
 
+// Función auxiliar para guardar en localStorage y actualizar la interfaz al mismo tiempo
+function guardarYRenderizar() {
+    localStorage.setItem('torteria_carrito', JSON.stringify(carrito));
+    renderizarCarrito();
+}
+
 function agregarAlCarrito(nombre, precio) {
     const encontrado = carrito.find(item => item.nombre === nombre);
     if (encontrado) {
@@ -45,7 +55,7 @@ function agregarAlCarrito(nombre, precio) {
     } else {
         carrito.push({ nombre, precio, cantidad: 1 });
     }
-    renderizarCarrito();
+    guardarYRenderizar(); // Guardar cambios persistentes
 }
 
 function cambiarCantidad(nombre, delta) {
@@ -55,14 +65,14 @@ function cambiarCantidad(nombre, delta) {
         if (item.cantidad <= 0) {
             eliminarDelCarrito(nombre);
         } else {
-            renderizarCarrito();
+            guardarYRenderizar(); // Guardar cambios persistentes
         }
     }
 }
 
 function eliminarDelCarrito(nombre) {
     carrito = carrito.filter(i => i.nombre !== nombre);
-    renderizarCarrito();
+    guardarYRenderizar(); // Guardar cambios persistentes
 }
 
 function renderizarCarrito() {
