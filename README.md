@@ -75,3 +75,11 @@ El contenedor llega vacío desde el servidor y JavaScript inyecta los elementos 
 <div class="catalogo-grid" id="catalogo-grid">
     <!-- El contenedor llega vacío; JavaScript poblará las tarjetas dinámicamente vía fetch() -->
 </div>
+
+## Comparación SSR vs CSR
+
+### SSR (Django): los productos llegan escritos en el HTML
+![SSR](docs/ssr.png)
+
+### CSR (JavaScript): el div del catálogo llega vacío
+![CSR](docs/csr.png)
