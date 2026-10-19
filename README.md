@@ -12,7 +12,7 @@
 ---
 
 ## Descripción del Proyecto
-Aplicación Web Progresiva (PWA) desarrollada para la tortería **Tortas Santos**. Permite a los clientes consultar el catálogo completo de productos, bebidas y complementos, realizar pedidos en línea interactivos con persistencia local (`localStorage`) y acceder a información clave del establecimiento desde dispositivos móviles y de escritorio.
+Aplicación Web Progresiva (PWA) desarrollada para la tortería **Tortas Santos**. Permite a los clientes consultar el catálogo completo de productos, bebidas y complementos, realizar pedidos en línea y acceder a información clave del establecimiento desde dispositivos móviles y de escritorio.
 
 ---
 
@@ -26,7 +26,8 @@ Aplicación Web Progresiva (PWA) desarrollada para la tortería **Tortas Santos*
 
 ---
 
-## Estructura del Proyecto
+
+## Estructura del Proyecto (Avance 1)
 
 ```text
 tortas-santos-pwa_santos-tirado-jesus-gustavo/
@@ -42,19 +43,33 @@ tortas-santos-pwa_santos-tirado-jesus-gustavo/
     ├── captura-ssr.png
     └── captura-csr.png
 
-Estructura y Arquitectura (Avance 2)
-🌮 Tortas Santos - Catálogo (SSR vs CSR)
+```
 
-Alumno: Santos Tirado, Jesús Gustavo (Identificación Hash Avance 1: 6a6f295)
+---
 
-🔍 Comparativa de Código Fuente: SSR vs CSR
-1. SSR (Server-Side Rendering — Django)
+## Estructura y Arquitectura (Avance 2)
+
+**🌮 Tortas Santos - Catálogo (SSR vs CSR)**  
+**Alumno:** Santos Tirado Jesus Gustavo  
+
+### 🔍 Comparativa de Código Fuente: SSR vs CSR
+
+#### 1. SSR (Server-Side Rendering — Django)
 Los productos vienen completamente inyectados e iterados desde el servidor en el HTML inicial:
 
+```html
 <div class="catalogo-grid" id="catalogo-grid">
+    <div class="card" data-categoria="Tortas Clásicas">
+        <h3 class="card-title">Torta Cubana</h3>
+        <span class="card-price">$110.00</span>
+    </div>
+    <!-- ... más productos renderizados por el servidor ... -->
+</div>
+```
+*<div class="catalogo-grid" id="catalogo-grid">
     {% for producto in productos %}
         <div class="card" data-categoria="{{ producto.categoria }}">
-            <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}" class="card-img" onerror="this.src='[https://via.placeholder.com/150?text=Tortas+Santos](https://via.placeholder.com/150?text=Tortas+Santos)'">
+            <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}" class="card-img" onerror="this.src='https://via.placeholder.com/150?text=Tortas+Santos'">
             <div class="card-body">
                 <span class="card-category">{{ producto.categoria }}</span>
                 <h3 class="card-title">{{ producto.nombre }}</h3>
@@ -67,19 +82,21 @@ Los productos vienen completamente inyectados e iterados desde el servidor en el
     {% empty %}
         <p>No hay productos disponibles en este momento.</p>
     {% endfor %}
-</div>
+</div>*
 
-2. CSR (Client-Side Rendering — JavaScript)
+#### 2. CSR (Client-Side Rendering — JavaScript)
 El contenedor llega vacío desde el servidor y JavaScript inyecta los elementos en tiempo de ejecución:
 
+```html
 <div class="catalogo-grid" id="catalogo-grid">
-    <!-- El contenedor llega vacío; JavaScript poblará las tarjetas dinámicamente vía fetch() -->
+    <!-- El contenedor llega vacío; JavaScript poblará las tarjetas dinámicamente -->
 </div>
+```
 
 ## Comparación SSR vs CSR
 
 ### SSR (Django): los productos llegan escritos en el HTML
-![SSR](docs/ssr.png)
+![SSR (Django)](docs/ssr.png)
 
 ### CSR (JavaScript): el div del catálogo llega vacío
-![CSR](docs/csr.png)
+![CSR (JavaScript)](docs/csr.png)
