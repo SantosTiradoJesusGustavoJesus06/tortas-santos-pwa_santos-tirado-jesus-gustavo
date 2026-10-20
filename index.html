@@ -3,23 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tortas Santos - Catálogo CSR</title>
+    <title>Tortas Santos - PWA</title>
+
+    <!-- Paso 17: Vinculación del Manifiesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d9534f">
     
-    <!-- Apuntando correctamente a la carpeta de estilos -->
+    <!-- Paso 16: Estilos de la librería Leaflet para el Mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Estilos de la aplicación -->
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-    <!-- Encabezado corporativo -->
+    <!-- Encabezado corporativo con Píldora de Estado de Conexión (Paso 19) -->
     <header class="app-header">
-        <div class="header-container">
+    <div class="header-container">
+        <!-- Grupo izquierdo (Logo + Textos juntos) -->
+        <div class="brand-left-group">
             <img src="img/LOGO_STJG.png" alt="Logo Tortas Santos" class="brand-logo" onerror="this.src='https://via.placeholder.com/60?text=Logo'">
             <div class="brand-info">
                 <h1>Tortas Santos</h1>
-                <p>Tortería Mexicana · Sabor Tradicional y Económico (CSR)</p>
+                <p>Tortería Mexicana · Sabor Tradicional y Económico</p>
             </div>
         </div>
-    </header>
+
+        <!-- Grupo derecho (Píldora de estado) -->
+        <div id="estado-conexion" class="pildora-conexion">conectado</div>
+    </div>
+</header>
 
     <!-- Zona Principal del Catálogo -->
     <main class="main-content">
@@ -32,20 +46,42 @@
             <button type="button" id="btn-bebidas">Bebidas y Extras</button>
         </div>
 
-        <h2 class="section-title">Nuestro Catálogo (Cliente CSR)</h2>
+        <h2 class="section-title">Nuestro Catálogo</h2>
         
-        <!-- Contenedor para inyección dinámica de JS -->
+        <!-- Contenedor para inyección dinámica de JS (CSR) -->
         <div class="catalogo-grid" id="catalogo-grid">
             <!-- Los productos se cargan aquí mediante csr.js -->
         </div>
 
-        <!-- Sección del Carrito de Compras -->
+        <!-- Sección del Carrito de Compras (Paso 14 - Sincronización) -->
         <section class="seccion-carrito">
             <h2>Tu Carrito de Compras</h2>
             <div id="lista-carrito">
                 <p style="color: var(--text-muted); margin-top: 10px;">El carrito está vacío.</p>
             </div>
             <h3 id="total-carrito" style="margin-top: 15px; color: var(--primary-color);">Total: $0.00</h3>
+            
+            <!-- Botón y mensaje para Sincronización Offline/Online -->
+            <div style="margin-top: 15px;">
+                <button type="button" id="btn-sincronizar">Sincronizar Pedido</button>
+                <p id="carrito-mensaje" style="margin-top: 8px; font-weight: bold;"></p>
+            </div>
+        </section>
+
+        <!-- Paso 15: Sección de Notificaciones -->
+        <section class="seccion-notificaciones" style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+            <h2>Notificaciones de Ofertas y Pedidos</h2>
+            <button type="button" id="btn-notificar">Activar Notificaciones</button>
+            <p id="notificaciones-mensaje" style="margin-top: 10px;"></p>
+        </section>
+
+        <!-- Paso 16: Sección de Geolocalización y Mapa -->
+        <section class="seccion-geolocalizacion" style="margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+            <h2>Ubica Nuestra Sucursal</h2>
+            <button type="button" id="btn-ubicacion">Calcular Ruta a Tortas Santos</button>
+            <p id="ubicacion-mensaje" style="margin-top: 10px;"></p>
+            <!-- Contenedor del Mapa Leaflet -->
+            <div id="mapa-ruta" style="height: 300px; margin-top: 15px; border-radius: 8px;" hidden></div>
         </section>
 
     </main>
@@ -57,18 +93,14 @@
         <p class="copyright">&copy; 2026 Tortas Santos - Todos los derechos reservados</p>
     </footer>
 
-    <!-- Apuntando correctamente a la carpeta js donde tienes los archivos -->
-    <script src="js/carrito.js"></script>
+    <!-- Scripts descomentados para el Avance 3 -->
+    <script src="js/app.js"></script>
     <script src="js/csr.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/notificaciones.js"></script>
+    <script src="js/geolocalizacion.js"></script>
 
-    <!-- Comentados para siguientes avances -->
-    <!-- <script src="js/notificaciones.js"></script> -->
-    <!-- <script src="js/geolocalizacion.js"></script> -->
-    <!-- <script src="js/app.js"></script> -->
-    <!-- <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
-        }
-    </script> -->
+    <!-- Paso 19: Registro del Service Worker (En una sola línea) -->
+    <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js").then(r=>console.log("SW OK:",r.scope)).catch(e=>console.error("SW Fail:",e));}</script>
 </body>
 </html>

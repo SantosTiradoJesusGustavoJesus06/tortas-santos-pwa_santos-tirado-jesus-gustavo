@@ -28,13 +28,22 @@ body {
 .app-header {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
-    padding: 15px 20px;
+    padding: 15px 24px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 100%;
 }
 
 .header-container {
-    max-width: 1100px;
+    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Agrupa la izquierda y manda la conexión a la extrema derecha */
+    align-items: center;
+}
+
+/* Contenedor que agrupa el logo y los textos a la izquierda */
+.brand-left-group {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -57,6 +66,22 @@ body {
 .brand-info p {
     font-size: 0.8rem;
     color: #fde047;
+}
+
+/* Píldora de estado de conexión a la extrema derecha */
+.pildora-conexion {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #28a745;
+    text-transform: lowercase;
+    white-space: nowrap;
+}
+
+.pildora-conexion.sin-conexion {
+    background-color: #dc3545;
 }
 
 /* Main */
@@ -189,4 +214,128 @@ body {
     .catalogo-grid {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* --- ESTILOS DE CENTRADO Y FORMATO PWA (AVANCE 3) --- */
+
+/* Centrar secciones completas */
+.seccion-carrito,
+.seccion-notificaciones,
+.seccion-geolocalizacion {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+/* Centrar textos y títulos */
+.seccion-carrito h2,
+.seccion-notificaciones h2,
+.seccion-geolocalizacion h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Lista del carrito centrada y limpia */
+#lista-carrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+/* Centrar los botones y los controles */
+.seccion-carrito button,
+.seccion-notificaciones button,
+.seccion-geolocalizacion button {
+    display: inline-block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: var(--primary-color, #d9534f);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.seccion-carrito button:hover,
+.seccion-notificaciones button:hover,
+.seccion-geolocalizacion button:hover {
+    filter: brightness(0.9);
+}
+
+/* Centrar y limitar ancho del mapa */
+#mapa-ruta {
+    width: 100%;
+    max-width: 700px;
+    height: 350px;
+    margin: 15px auto 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Mensajes centrados */
+#carrito-mensaje,
+#notificaciones-mensaje,
+#ubicacion-mensaje {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* --- DISEÑO DE BOTONES DE CATEGORÍA --- */
+.categorias-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.categorias-container button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    color: #333333;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.categorias-container button:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* Estado activo para la categoría seleccionada */
+.categorias-container button.activo {
+    background-color: #d9534f;
+    color: #ffffff;
+    border-color: #d9534f;
+    box-shadow: 0 3px 6px rgba(217, 83, 79, 0.3);
 }

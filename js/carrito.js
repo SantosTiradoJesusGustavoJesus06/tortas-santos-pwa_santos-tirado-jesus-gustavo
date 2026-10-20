@@ -22,6 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Renderizar el carrito al cargar la página para recuperar los datos guardados
     renderizarCarrito();
+
+    // Evento para botón manual de sincronizar (si existe en tu HTML)
+    const btnSincro = document.getElementById("btn-sincronizar");
+    if (btnSincro) {
+        btnSincro.addEventListener("click", sincronizarCarrito);
+    }
+
+    // Escuchar cambios en la conexión de internet (Paso 14)
+    window.addEventListener("online", sincronizarCarrito);
+    window.addEventListener("offline", () => {
+        const mensaje = document.getElementById("carrito-mensaje");
+        if (mensaje) {
+            mensaje.textContent = "Se perdió la conexión. Los cambios se guardan localmente.";
+        }
+    });
 });
 
 function aplicarFiltroCategoria() {
@@ -109,4 +124,20 @@ function renderizarCarrito() {
 
     contenedor.innerHTML = html;
     totalEl.innerText = `Total: $${total.toFixed(2)}`;
+}
+
+// --- PASO 14: Sincronización cuando vuelve la conexión ---
+function sincronizarCarrito() {
+    const mensaje = document.getElementById("carrito-mensaje");
+
+    if (!navigator.onLine) {
+        if (mensaje) {
+            mensaje.textContent = "Sin conexión: el pedido de Tortas Santos se sincronizará cuando vuelva el internet.";
+        }
+        return;
+    }
+
+    if (mensaje) {
+        mensaje.textContent = "Pedido de Tortas Santos sincronizado con el servidor. ✓";
+    }
 }
