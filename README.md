@@ -22,6 +22,7 @@ Aplicación Web Progresiva (PWA) desarrollada para la tortería **Tortas Santos*
 | 1 | `6a6f295` | 11/10/2026 |
 | 2 | `08fe65c` | 18/10/2026 |
 | 3 | `ab5744f` | 25/10/2026 |
+| 3 | `69d192a` | 20/10/2026 |
 | 4 | (se escribe en el reporte PDF) | 01/11/2026 |
 ---
 
@@ -62,7 +63,7 @@ tortas-santos-pwa_santos-tirado-jesus-gustavo/
 ## Funciones PWA (avance 3)
 
 ### index.html: manifest y registro del Service Worker activos
-<!-- ![Código fuente index.html](docs/captura-index-pwa.png) -->
+![Código fuente index.html](docs/captura-index-pwa.png)
 
 ### sw.js: Workbox precachea el catálogo y las fotos
-<!-- ![Código fuente sw.js](docs/captura-sw.png) -->
+![Código fuente sw.js](docs/captura-sw.png)
