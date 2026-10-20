@@ -1,13 +1,12 @@
-# Proyecto PWA - Tortas Santos
-
-**Nombre del estudiante:** Santos Tirado, Jesús Gustavo  
-**Grupo:** TDSM10-1  
-**Negocio:** Tortas Santos  
-**Giro:** Tortería Mexicana (Alimentos y Bebidas)  
-**Hash de Identificación (Avance 1):** `6a6f295`
-
-- **URL del repositorio:** [GitHub Repository](https://github.com/SantosTiradoJesusGustavoJesus06/tortas-santos-pwa_santos-tirado-jesus-gustavo)
-- **URL de GitHub Pages:** [GitHub Pages](https://santostiradojesusgustavojesus06.github.io/tortas-santos-pwa_santos-tirado-jesus-gustavo/)
+# Tortas Santos — PWA de ventas
+ 
+| Dato | Valor |
+|---|---|
+| **Alumno** | SANTOS TIRADO JESUS GUSTAVO |
+| **Grupo** | ING10-1 |
+| **Negocio · giro** | Tortas Santos · Tortería |
+| **URL del repositorio** | https://github.com/SantosTiradoJesusGustavoJesus06/tortas-santos-pwa_santos-tirado-jesus-gustavo |
+| **URL de GitHub Pages** | https://santostiradojesusgustavojesus06.github.io/tortas-santos-pwa_santos-tirado-jesus-gustavo/ |
 
 ---
 
@@ -16,14 +15,14 @@ Aplicación Web Progresiva (PWA) desarrollada para la tortería **Tortas Santos*
 
 ---
 
-## Historial de Avances e Identificación de Commits
-
-| Avance | Commit Hash | Descripción del Cambio | Referencia |
-| :--- | :--- | :--- | :--- |
-| **Avance 1** | `6a6f295` | Estructura base, App Shell, maquetación responsiva y recursos estáticos. | Versión Inicial |
-| **Avance 2** | `08fe65c` | Estructura final del README con comparativa SSR vs CSR y capturas. | Documentación técnica |
-| **Corrección** | `aa8b514` | Corrección de persistencia del carrito utilizando `localStorage`. | Ajuste de Lógica |
-
+## Historial de avances
+ 
+| Avance | Hash del commit entregado | Fecha |
+|---|---|---|
+| 1 | `6a6f295` | 11/10/2026 |
+| 2 | `08fe65c` | 18/10/2026 |
+| 3 | `ab5744f` | 25/10/2026 |
+| 4 | (se escribe en el reporte PDF) | 01/11/2026 |
 ---
 
 
@@ -52,47 +51,6 @@ tortas-santos-pwa_santos-tirado-jesus-gustavo/
 **🌮 Tortas Santos - Catálogo (SSR vs CSR)**  
 **Alumno:** Santos Tirado Jesus Gustavo  
 
-### 🔍 Comparativa de Código Fuente: SSR vs CSR
-
-#### 1. SSR (Server-Side Rendering — Django)
-Los productos vienen completamente inyectados e iterados desde el servidor en el HTML inicial:
-
-```html
-<div class="catalogo-grid" id="catalogo-grid">
-    <div class="card" data-categoria="Tortas Clásicas">
-        <h3 class="card-title">Torta Cubana</h3>
-        <span class="card-price">$110.00</span>
-    </div>
-    <!-- ... más productos renderizados por el servidor ... -->
-</div>
-```
-*<div class="catalogo-grid" id="catalogo-grid">
-    {% for producto in productos %}
-        <div class="card" data-categoria="{{ producto.categoria }}">
-            <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}" class="card-img" onerror="this.src='https://via.placeholder.com/150?text=Tortas+Santos'">
-            <div class="card-body">
-                <span class="card-category">{{ producto.categoria }}</span>
-                <h3 class="card-title">{{ producto.nombre }}</h3>
-                <div class="card-footer-info">
-                    <span class="card-price">${{ producto.precio|floatformat:2 }}</span>
-                    <button type="button" class="btn-agregar" data-nombre="{{ producto.nombre }}" data-precio="{{ producto.precio }}" onclick="agregarDesdeBoton(this)">Agregar</button>
-                </div>
-            </div>
-        </div>
-    {% empty %}
-        <p>No hay productos disponibles en este momento.</p>
-    {% endfor %}
-</div>*
-
-#### 2. CSR (Client-Side Rendering — JavaScript)
-El contenedor llega vacío desde el servidor y JavaScript inyecta los elementos en tiempo de ejecución:
-
-```html
-<div class="catalogo-grid" id="catalogo-grid">
-    <!-- El contenedor llega vacío; JavaScript poblará las tarjetas dinámicamente -->
-</div>
-```
-
 ## Comparación SSR vs CSR
 
 ### SSR (Django): los productos llegan escritos en el HTML
@@ -100,3 +58,11 @@ El contenedor llega vacío desde el servidor y JavaScript inyecta los elementos 
 
 ### CSR (JavaScript): el div del catálogo llega vacío
 ![CSR (JavaScript)](docs/csr.png)
+
+## Funciones PWA (avance 3)
+
+### index.html: manifest y registro del Service Worker activos
+<!-- ![Código fuente index.html](docs/captura-index-pwa.png) -->
+
+### sw.js: Workbox precachea el catálogo y las fotos
+<!-- ![Código fuente sw.js](docs/captura-sw.png) -->
