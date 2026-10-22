@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tortas Santos - PWA</title>
 
+    <!-- Favicon: Muestra el logo en la pestaña y elimina el error 404 en la consola -->
+    <link rel="icon" href="img/LOGO_STJG.png" type="image/png">
+
     <!-- Paso 17: Vinculación del Manifiesto PWA -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#d9534f">
@@ -20,20 +23,20 @@
 
     <!-- Encabezado corporativo con Píldora de Estado de Conexión (Paso 19) -->
     <header class="app-header">
-    <div class="header-container">
-        <!-- Grupo izquierdo (Logo + Textos juntos) -->
-        <div class="brand-left-group">
-            <img src="img/LOGO_STJG.png" alt="Logo Tortas Santos" class="brand-logo" onerror="this.src='https://via.placeholder.com/60?text=Logo'">
-            <div class="brand-info">
-                <h1>Tortas Santos</h1>
-                <p>Tortería Mexicana · Sabor Tradicional y Económico</p>
+        <div class="header-container">
+            <!-- Grupo izquierdo (Logo + Textos juntos) -->
+            <div class="brand-left-group">
+                <img src="img/LOGO_STJG.png" alt="Logo Tortas Santos" class="brand-logo" onerror="this.src='https://via.placeholder.com/60?text=Logo'">
+                <div class="brand-info">
+                    <h1>Tortas Santos</h1>
+                    <p>Tortería Mexicana · Sabor Tradicional y Económico</p>
+                </div>
             </div>
-        </div>
 
-        <!-- Grupo derecho (Píldora de estado) -->
-        <div id="estado-conexion" class="pildora-conexion">conectado</div>
-    </div>
-</header>
+            <!-- Grupo derecho (Píldora de estado) -->
+            <div id="estado-conexion" class="pildora-conexion">conectado</div>
+        </div>
+    </header>
 
     <!-- Zona Principal del Catálogo -->
     <main class="main-content">
@@ -93,14 +96,14 @@
         <p class="copyright">&copy; 2026 Tortas Santos - Todos los derechos reservados</p>
     </footer>
 
-    <!-- Scripts descomentados para el Avance 3 -->
+    <!-- Scripts de la aplicación -->
     <script src="js/app.js"></script>
     <script src="js/csr.js"></script>
     <script src="js/carrito.js"></script>
     <script src="js/notificaciones.js"></script>
     <script src="js/geolocalizacion.js"></script>
 
-    <!-- Paso 19: Registro del Service Worker (En una sola línea) -->
+    <!-- Paso 19: Registro del Service Worker -->
     <script>if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js").then(r=>console.log("SW OK:",r.scope)).catch(e=>console.error("SW Fail:",e));}</script>
 </body>
 </html>
