@@ -16,17 +16,13 @@ Aplicación Web Progresiva (PWA) desarrollada para la tortería **Tortas Santos*
 ---
 
 ## Historial de avances
- 
+
 | Avance | Hash del commit entregado | Fecha |
 |---|---|---|
-| 1 | `6a6f295` | 11/10/2026 |
-| 2 | `08fe65c` | 18/10/2026 |
-| 3 | `77d2d85` | 19/10/2026 |
-| 3 | `9686268` | 20/10/2026 |
-| 3 | `2d79c1c` | 20/10/2026 |
-| 3 | `bcbb599` | 21/10/2026 |
-| 3 | `ad5a5dd` | 21/10/2026 |
-| 4 | (se escribe en el reporte PDF) | 01/11/2026 |
+| 1 | `6a6f295` | 06/10/2026 |
+| 2 | `08fe65c` | 15/10/2026 |
+| 3 | `cd22623` | 21/10/2026 |
+| 4 | (se escribe en el reporte PDF) | — |
 ---
 
 
