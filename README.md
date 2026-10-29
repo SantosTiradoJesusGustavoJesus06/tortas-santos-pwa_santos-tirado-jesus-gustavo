@@ -22,7 +22,7 @@ Aplicación Web Progresiva (PWA) desarrollada para la tortería **Tortas Santos*
 | 1 | `6a6f295` | 06/10/2026 |
 | 2 | `08fe65c` | 15/10/2026 |
 | 3 | `cd22623` | 22/10/2026 |
-| 4 | (se escribe en el reporte PDF) | — |
+| 4 | `caffbc7` | 29/10/2026 |
 ---
 
 
