@@ -24,7 +24,7 @@ function renderizarCatalogoCSR(lista) {
     
     grid.innerHTML = lista.map(p => `
         <div class="card" data-categoria="${p.categoria}">
-            <img src="${p.imagen}" alt="${p.nombre}" class="card-img" onerror="this.src='https://via.placeholder.com/150?text=Tortas+Santos'">
+            <img src="${p.imagen}" alt="${p.nombre}" class="card-img" width="400" height="300" loading="lazy" onerror="this.src='https://via.placeholder.com/150?text=Tortas+Santos'">
             <div class="card-body">
                 <span class="card-category">${p.categoria}</span>
                 <h3 class="card-title">${p.nombre}</h3>
